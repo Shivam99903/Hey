@@ -1,229 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Meet Me?</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7fafc; /* Light gray background */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px; /* Add some padding for mobile */
-            box-sizing: border-box; /* Include padding in element's total width and height */
-        }
-        .container {
-            background-color: #ffffff;
-            border-radius: 1.5rem; /* Rounded corners */
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            padding: 2.5rem;
-            text-align: center;
-            max-width: 500px; /* Limit width for better readability */
-            width: 100%; /* Make it fill the width on smaller screens */
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-        .cute-text {
-            color: #ef4444; /* Red tone for cuteness */
-            font-size: 2.25rem; /* text-4xl */
-            font-weight: 700; /* font-bold */
-            line-height: 1.2;
-        }
-        .message-text {
-            color: #4a5568; /* Darker gray for message */
-            font-size: 1.25rem; /* text-xl */
-            font-weight: 400;
-        }
-        .button-group {
-            display: flex;
-            justify-content: center;
-            gap: 1rem; /* Space between buttons */
-            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
-            position: relative; /* Essential for absolute positioning of 'No' button */
-        }
-        .cute-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 2rem;
-            border-radius: 9999px; /* Fully rounded */
-            font-weight: 600; /* font-semibold */
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            text-decoration: none; /* Remove underline for anchor tag */
-            border: none; /* Remove default button border */
-        }
-        .cute-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-        .cute-button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Will You Meet Me?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-image: url('https://media.assettype.com/freepressjournal/2023-06/86cf05d7-2d75-4c64-894e-b9f7f764acd7/For_Header_Thumb_600X900_AMP_635914145a045.jpeg?width=1200');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      margin: 0;
+    }
 
-        .yes-button {
-            background-color: #10b981; /* Green tone */
-            color: #ffffff;
-        }
-        .yes-button:hover {
-            background-color: #059669; /* Darker green */
-        }
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      transform: rotate(45deg);
+      animation: float 2s ease-out forwards;
+    }
 
-        .no-button {
-            background-color: #fca5a5; /* Light red tone */
-            color: #b91c1c;
-            /* Default for desktop: absolute positioning */
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: calc(100% + 1rem); /* Position below the 'Yes' button, relative to button-group */
-        }
-        .no-button:hover {
-            background-color: #f87171; /* Darker light red */
-        }
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: red;
+      border-radius: 50%;
+    }
 
-        .response-message {
-            color: #38a169; /* Green for positive response */
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 600;
-            margin-top: 1.5rem;
-            display: none; /* Hidden by default */
-        }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: -10px; top: 0; }
 
-        /* Responsive adjustments */
-        @media (max-width: 479px) {
-            .container {
-                padding: 1.5rem;
-            }
-            .cute-text {
-                font-size: 1.75rem; /* text-3xl on smaller screens */
-            }
-            .message-text {
-                font-size: 1rem; /* text-base on smaller screens */
-            }
-            .cute-button {
-                width: 100%; /* Full width buttons on very small screens */
-            }
-            .button-group {
-                flex-direction: column; /* Stack buttons vertically */
-                align-items: center; /* Center stacked buttons */
-                gap: 1rem; /* Space between stacked buttons */
-            }
-            .no-button {
-                position: relative; /* Override absolute positioning for mobile */
-                left: auto; /* Reset left */
-                top: auto; /* Reset top */
-                transform: none; /* Reset transform */
-                margin-top: 0; /* Remove specific margin set by JS or absolute positioning */
-            }
-        }
-    </style>
+    @keyframes float {
+      to {
+        transform: translateY(-200px) scale(1.2) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-8px); }
+      50% { transform: translateX(8px); }
+      75% { transform: translateX(-4px); }
+    }
+
+    .shake {
+      animation: shake 0.4s ease;
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <h1 class="cute-text">Hey Cutie Pie! 💖</h1>
-        <p class="message-text">I've been thinking about you, and I was wondering if you'd like to go on a little adventure with me soon?</p>
-        <p class="message-text">How about we grab some coffee, explore that new bookstore, or maybe just chill and watch a movie?</p>
+<body class="flex items-center justify-center min-h-screen px-4 py-6">
+  <div class="bg-white bg-opacity-90 rounded-3xl shadow-2xl p-6 sm:p-8 max-w-md w-full text-center space-y-5">
+    <h1 class="text-3xl sm:text-4xl font-bold text-rose-500">Ayushiiii 🌸</h1>
+    <p class="text-base sm:text-lg text-gray-700">It's been a long-time wish!! </p>
+    <p class="text-base sm:text-lg text-gray-700">Ammmm would you like to meet?</p>
+    <p class="text-base sm:text-lg text-gray-600">Plz say Yesss!</p>
 
-        <div class="button-group">
-            <button id="yesBtn" class="cute-button yes-button">YES! Absolutely! 🥰</button>
-            <button id="noBtn" class="cute-button no-button">Uh oh, maybe another time...</button>
-        </div>
-
-        <p id="responseMsg" class="response-message">Yay! I'm so excited! Can't wait to make some fun plans with you! 🎉</p>
+    <div id="btnGroup" class="flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:relative min-h-[80px] mt-4">
+      <button id="yesBtn" class="w-full sm:w-auto px-6 py-3 bg-emerald-500 text-white font-semibold rounded-full shadow-lg hover:bg-emerald-600 transition">YES! Absolutely! 🥰</button>
+      <button id="noBtn" class="w-full sm:w-auto px-6 py-3 bg-rose-200 text-rose-700 font-semibold rounded-full shadow-md transition sm:absolute sm:top-[90px] sm:left-1/2 sm:-translate-x-1/2">Uh oh, maybe another time...</button>
     </div>
 
-    <script>
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const responseMsg = document.getElementById('responseMsg');
-        const container = document.querySelector('.container');
-        const buttonGroup = document.querySelector('.button-group'); // Get button group for positioning
+    <p id="responseMsg" class="text-xl text-green-600 font-semibold hidden">Yaaay! See you soon 🎉</p>
+  </div>
 
-        const MOBILE_BREAKPOINT = 479; // Matches CSS breakpoint
+  <!-- Hidden Form to Notify -->
+  <form id="notifyForm" action="https://formspree.io/f/mvgrzqzj" method="POST" style="display: none;">
+    <input type="hidden" name="response" value="She clicked YES! 🎉">
+  </form>
 
-        // Function to move the "No" button randomly
-        function moveNoButton() {
-            // Only move if on a larger screen (desktop/tablet)
-            if (window.innerWidth > MOBILE_BREAKPOINT) {
-                const containerRect = buttonGroup.getBoundingClientRect(); // Use buttonGroup as reference
-                const noBtnRect = noBtn.getBoundingClientRect();
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const responseMsg = document.getElementById('responseMsg');
+    const btnGroup = document.getElementById('btnGroup');
+    const MOBILE_BREAKPOINT = 640;
 
-                // Calculate max movement within the button group's effective area
-                // We want to avoid pushing it outside the visible container or too far
-                const maxX = containerRect.width - noBtnRect.width;
-                const maxY = containerRect.height - noBtnRect.height; // This might need adjustment based on layout
+    // YES click handler
+    yesBtn.addEventListener('click', () => {
+      responseMsg.classList.remove('hidden');
+      btnGroup.classList.add('hidden');
+      for (let i = 0; i < 12; i++) createHeart();
+      if (window.navigator.vibrate) navigator.vibrate(200); // Mobile vibration
+      document.getElementById('notifyForm').submit(); // Formspree notify
+    });
 
-                // Prevent it from moving too far left/right and ensure it's still near 'Yes' button
-                const newX = Math.random() * maxX;
-                const newY = Math.random() * 50; // Limit vertical movement for better UX, e.g., 0-50px
+    // Move NO button on desktop
+    noBtn.addEventListener('mouseenter', () => {
+      if (window.innerWidth > MOBILE_BREAKPOINT) {
+        const container = btnGroup.getBoundingClientRect();
+        const maxX = container.width - noBtn.offsetWidth;
+        const maxY = 80;
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+        noBtn.style.position = 'absolute';
+        noBtn.style.left = `${newX}px`;
+        noBtn.style.top = `${newY + 80}px`;
+      }
+    });
 
-                // Apply a slight transform for visual effect
-                noBtn.style.position = 'absolute'; // Ensure it's absolute for movement
-                noBtn.style.left = `${newX}px`;
-                noBtn.style.top = `${newY}px`; // Adjust top based on where you want it to jump
-                noBtn.style.transform = `translate(-50%, 0)`; // Center based on its own width from left
-                noBtn.style.transition = 'top 0.1s ease, left 0.1s ease, transform 0.1s ease'; // Faster transition for a 'jump'
-            }
-        }
+    // Shake on mobile
+    noBtn.addEventListener('click', () => {
+      if (window.innerWidth <= MOBILE_BREAKPOINT) {
+        noBtn.classList.add('shake');
+        if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+        setTimeout(() => noBtn.classList.remove('shake'), 500);
+      }
+    });
 
-        // Function to set initial/reset position for 'No' button based on screen size
-        function setNoButtonPosition() {
-            if (window.innerWidth <= MOBILE_BREAKPOINT) {
-                noBtn.style.position = 'relative';
-                noBtn.style.left = 'auto';
-                noBtn.style.top = 'auto';
-                noBtn.style.transform = 'none';
-                noBtn.style.marginTop = '1rem'; // Ensure spacing if stacked
-            } else {
-                // Reset to absolute for desktop, then call moveNoButton for initial random position
-                noBtn.style.position = 'absolute';
-                noBtn.style.marginTop = '0';
-                // Reset to default absolute position before potential random move
-                noBtn.style.left = '50%';
-                noBtn.style.top = 'calc(100% + 1rem)';
-                noBtn.style.transform = 'translateX(-50%)';
-            }
-        }
-
-
-        // Add event listeners
-        yesBtn.addEventListener('click', () => {
-            responseMsg.style.display = 'block'; // Show the happy message
-            yesBtn.style.display = 'none'; // Hide yes button
-            noBtn.style.display = 'none'; // Hide no button
-        });
-
-        noBtn.addEventListener('mouseover', () => {
-            // Only move if the response message is not displayed and on desktop/tablet
-            if (responseMsg.style.display !== 'block' && window.innerWidth > MOBILE_BREAKPOINT) {
-                moveNoButton();
-            }
-        });
-
-        // Set initial position on load
-        window.addEventListener('load', setNoButtonPosition);
-        // Adjust position on window resize
-        window.addEventListener('resize', setNoButtonPosition);
-
-        // A tiny improvement: if the user clicks 'No' on mobile, it just registers the click
-        noBtn.addEventListener('click', () => {
-             if (window.innerWidth <= MOBILE_BREAKPOINT) {
-                // Optionally provide a subtle message or clear the interaction
-                // For this cute app, we'll just let it be a non-moving button on mobile.
-                console.log("No button clicked on mobile.");
-            }
-        });
-
-    </script>
+    // Floating hearts on YES
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '80vh';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+    }
+  </script>
 </body>
 </html>
