@@ -39,55 +39,66 @@
         opacity: 0;
       }
     }
-    .shake { animation: shake 0.4s ease; }
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-8px); }
-      50% { transform: translateX(8px); }
-      75% { transform: translateX(-4px); }
-    }
-    .legal-text { line-height: 1.6; }
   </style>
 </head>
 <body class="flex items-center justify-center min-h-screen px-4 py-10">
   <div class="bg-white bg-opacity-95 rounded-3xl shadow-2xl p-6 sm:p-10 max-w-2xl w-full text-center border-t-8 border-rose-500">
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-2">Notice for Rashmi</h1>
-    <div class="h-1 w-20 bg-rose-500 mx-auto mb-6"></div>
+    <h1 class="text-4xl font-extrabold text-rose-500 mb-6">Rashmi</h1>
     
-    <div class="legal-text text-left text-sm sm:text-base text-gray-800 space-y-4 max-h-[60vh] overflow-y-auto px-2">
-      <p class="font-bold text-center border-b pb-2">FORMAL NOTICE OF INTENT TO MERGE</p>
-      <p><strong>TO:</strong> Rashmi, hereinafter "The Respondent"<br>
-         <strong>FROM:</strong> Shivam, hereinafter "The Petitioner"<br>
-         <strong>DATE:</strong> December 25, 2025</p>
-
-      <p><strong>I. STATEMENT OF FACTS</strong><br>
-      On or about <strong>December 15, 2025</strong>, the parties met, establishing a precedent for immediate and mutual attraction. The Petitioner has found the Respondent to be 100% compatible in all key metrics, including humor, brilliance, and a "hell lot of beauty."</p>
-
-      <p><strong>II. THE PROPOSAL</strong><br>
-      The Petitioner moves to consolidate into a <strong>Permanent Couple Merger</strong>. Shivam promises to provide lifelong loyalty (Exhibit A), handle all spider removals (Exhibit B), and ensure Rashmi feels like the most important person in every room (Exhibit C).</p>
-
-      <p><strong>III. PRAYER FOR RELIEF</strong><br>
-      The Petitioner requests a <strong>Summary Judgment of "YES,"</strong> moving directly to the "happily ever after" phase.</p>
+    <div class="text-left text-gray-800 space-y-6 text-sm sm:text-base leading-relaxed overflow-y-auto max-h-[65vh] pr-2">
       
-      <p class="italic text-rose-600 font-semibold text-center mt-4">Rashmi, I’ve reviewed the evidence, and the verdict is unanimous: I want to be with you and I promise never to appeal.</p>
+      <div class="text-center font-bold border-b pb-2 uppercase tracking-wide">
+        Formal Notice of Intent to Merge
+      </div>
+
+      <div class="grid grid-cols-1 gap-1">
+        <p><strong>TO:</strong> Rashmi (The Respondent)</p>
+        <p><strong>FROM:</strong> Shivam (The Petitioner)</p>
+        <p><strong>DATE:</strong> December 25, 2025</p>
+        <p><strong>RE:</strong> Formulating a Lifetime Couple Agreement</p>
+      </div>
+
+      <section>
+        <h3 class="font-bold text-rose-600 mb-2 underline">I. STATEMENT OF FACTS</h3>
+        <p class="pl-4">On or about <strong>December 15, 2025</strong>, the parties met, establishing a precedent for immediate and mutual attraction. Since that date, the Petitioner has conducted extensive discovery and found the Respondent to be 100% compatible in all metrics: humor, brilliance, and a hell lot of beauty.</p>
+      </section>
+
+      <section>
+        <h3 class="font-bold text-rose-600 mb-2 underline">II. THE PROPOSAL</h3>
+        <p class="mb-2 pl-4">The Petitioner moves to settle all current "single" status accounts and consolidate into a Permanent Couple Merger. Shivam promises to:</p>
+        <ul class="list-disc pl-10 space-y-2">
+          <li><strong>Exhibit A (Loyalty):</strong> Provide lifelong devotion with no expiration date.</li>
+          <li><strong>Exhibit B (Labor):</strong> Handle all heavy lifting, spider removals, and tech support.</li>
+          <li><strong>Exhibit C (Love):</strong> Ensure Rashmi feels like the most important person in every room, every day.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="font-bold text-rose-600 mb-2 underline">III. PRAYER FOR RELIEF</h3>
+        <p class="pl-4">The Petitioner requests a Summary Judgment of "YES," effectively skipping any further trial periods and moving directly to the "happily ever after" phase.</p>
+      </section>
+
+      <section class="bg-rose-50 p-4 rounded-lg border-l-4 border-rose-500 italic">
+        <strong>CLOSING ARGUMENT:</strong> Rashmi, I have reviewed the evidence of our time together, and the verdict is unanimous: I want to be with you and I promise never to appeal.
+      </section>
     </div>
 
-    <div id="btnGroup" class="relative mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 min-h-[100px]">
-      <button id="yesBtn" class="z-10 w-full sm:w-auto px-10 py-4 bg-emerald-500 text-white font-bold rounded-full shadow-xl hover:bg-emerald-600 transform hover:scale-105 transition-all">
+    <div id="btnGroup" class="relative mt-8 flex flex-col sm:flex-row items-center justify-center gap-6 min-h-[80px]">
+      <button id="yesBtn" class="w-full sm:w-auto px-10 py-4 bg-emerald-500 text-white font-bold rounded-full shadow-lg hover:bg-emerald-600 transition-all transform hover:scale-105">
         YES! 💍
       </button>
-      <button id="noBtn" class="w-full sm:w-auto px-6 py-3 bg-gray-200 text-gray-500 font-semibold rounded-full transition-all duration-200">
+      <button id="noBtn" class="w-full sm:w-auto px-8 py-3 bg-gray-200 text-gray-500 font-semibold rounded-full shadow-md transition-all">
         Objection!
       </button>
     </div>
 
-    <p id="responseMsg" class="text-2xl text-rose-600 font-bold hidden animate-bounce mt-6">
-      Verdict Accepted! See you soon, Mrs. Shivam 🎉
+    <p id="responseMsg" class="text-2xl text-emerald-600 font-bold hidden animate-bounce mt-6">
+      Verdict Accepted! See you soon 🎉
     </p>
   </div>
 
   <form id="notifyForm" action="https://formspree.io/f/mvgrzqzj" method="POST" style="display: none;">
-    <input type="hidden" name="response" value="Rashmi said YES! 💍🎉">
+    <input type="hidden" name="response" value="Rashmi clicked YES! 🎉">
   </form>
 
   <script>
@@ -98,12 +109,10 @@
 
     yesBtn.addEventListener('click', () => {
       responseMsg.classList.remove('hidden');
-      btnGroup.style.display = 'none';
-      for (let i = 0; i < 30; i++) {
-        setTimeout(createHeart, i * 100);
-      }
-      if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
-      setTimeout(() => { document.getElementById('notifyForm').submit(); }, 3000);
+      btnGroup.classList.add('hidden');
+      for (let i = 0; i < 20; i++) setTimeout(createHeart, i * 150);
+      if (navigator.vibrate) navigator.vibrate(200);
+      document.getElementById('notifyForm').submit();
     });
 
     noBtn.addEventListener('mouseover', () => {
@@ -116,19 +125,13 @@
       }
     });
 
-    noBtn.addEventListener('click', () => {
-      noBtn.classList.add('shake');
-      setTimeout(() => noBtn.classList.remove('shake'), 400);
-    });
-
     function createHeart() {
       const heart = document.createElement('div');
       heart.className = 'heart';
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.top = '100vh';
-      heart.style.opacity = Math.random();
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 2500);
+      setTimeout(() => heart.remove(), 2000);
     }
   </script>
 </body>
